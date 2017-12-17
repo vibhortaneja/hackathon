@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#reading a file\n\nstackOverflwPub <- read.csv(file.choose(),header =T , na.strings = c(\"NA\"), stringsAsFactors = F)\n\n#extract the name of the dimensions for your plotting purpose\n\nreq_dataframe <- stackOverflwPub[ , c(\"Professional\" ,\"Country\",\"HaveWorkedLanguage\")]\n\n\n# if package is not installed automatically installed\n\nlist.of.packages <- c(\"tidyr\")\nnew.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,\"Package\"])]\nif(length(new.packages)) install.packages(new.packages)\n\nlibrary(tidyr)\n\nsave_data <- separate_rows(req_dataframe, HaveWorkedLanguage)\nwrite.csv(save_data , \"req.csv\")\n\n\n",
+    "created" : 1513408481256.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2806009461",
+    "id" : "231C81D6",
+    "lastKnownWriteTime" : 1513412877,
+    "last_content_update" : 1513412877775,
+    "path" : "~/vibhor/splitColRow.R",
+    "project_path" : "splitColRow.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
