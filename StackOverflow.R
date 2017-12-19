@@ -24,7 +24,7 @@ has_salary2 <- has_salary %>%
 logmodel <- glm(JobSatisfaction ~ logsalary, data = has_salary2 , family = "gaussian")
 glm.diag.plots(logmodel)
 
-ggplot(has_salary, aes(Salary)) + geom_histogram(color="goldenrod4", fill= "goldenrod3")
+ggplot(has_salary, aes(Salary)) + geom_histogram(color="#667ea5", fill= "#9ec2ff")
 
 # why are these people making so little?
 # perhaps it's employment status:
@@ -44,7 +44,7 @@ head(unique(by_country$n), n=10)
 
 
 ggplot(by_country, aes(Salary)) + 
-  geom_histogram(fill = "tan3", color= "tan4") + 
+  geom_histogram(fill = "#a55200", color= "#4f2700") + 
   facet_wrap(~Country)
 
 america <- has_salary %>%
@@ -57,7 +57,7 @@ glm.diag.plots(AmericaModel)
 ggplot(america, aes(x=Salary, y = JobSatisfaction)) + 
   geom_jitter()
 
-# hehe
+# middle america
 middle_america <- america %>%
   filter(Salary > 50000 && Salary < 150000) %>%
   mutate(LogSalary = log(Salary))
