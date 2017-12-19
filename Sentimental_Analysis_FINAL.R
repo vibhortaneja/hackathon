@@ -10,7 +10,7 @@ library(igraph)
 library(ggraph)
 library(wordcloud2)
 
-demonitization_data <-read.csv("C:\\Users\\VIBHOR TANEJA\\Downloads\\demonetization-tweets.csv")
+demonitization_data <-read.csv("C:\\Users\\vibhor.5.taneja\\Desktop\\hackathon\\Data\\demonetization-tweets.csv")
 demonitization_bigrams <- unnest_tokens(demonitization_data, input = text, output = bigram, token = "ngrams", n=2)
 
 demonitization_bigrams %>% count(bigram, sort = TRUE)
