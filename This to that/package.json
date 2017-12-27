@@ -1,0 +1,15 @@
+{
+  "name": "wordchain",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server/main.js",
+  "scripts": {
+    "start": "node server/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
