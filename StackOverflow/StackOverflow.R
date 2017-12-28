@@ -1,6 +1,6 @@
 library(tidyverse)
 library(boot)
-stackOverflow <- read_csv("C:\\Users\\vibhor.5.taneja\\Desktop\\hackathon\\Data\\survey_results_public.csv")
+stackOverflow <- read_csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\StackOverflow\\Data\\survey_results_public.csv")
 # Looking at the vars in question:
 head(stackOverflow)
 summary(stackOverflow$Salary)
