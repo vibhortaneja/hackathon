@@ -8,7 +8,7 @@ library(syuzhet)
 
 
 #Import the twitter data set
-demonitization_data=read.csv('C:\\Users\\vibhor.5.taneja\\Desktop\\hackathon\\Data\\demonetization-tweets-2.csv',stringsAsFactors = FALSE)
+demonitization_data=read.csv('C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\Sentimental_Analysis\\Data\\demonetization-tweets-2.csv',stringsAsFactors = FALSE)
 options(warn=-1)
 summary(demonitization_data)
 
