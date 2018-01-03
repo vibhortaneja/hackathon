@@ -1,6 +1,6 @@
 library(tidyverse)
 library(boot)
-library
+library(sqldf)
 stackOverflow <- read_csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\StackOverflow\\Data\\survey_results_public.csv")
 stackOverflow1 <- read_csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\StackOverflow\\File_converstion_for_stack_problem\\req.csv")
 
@@ -19,8 +19,9 @@ summary(stackOverflow$JobSatisfaction)
 has_salary <- stackOverflow %>%
   filter(Salary != "NA") %>%
   filter(JobSatisfaction != "NA")
-dim(has_salary)
-unique(has_salary$JobSatisfaction)   # just a quick head check
+dim(has_salary) #returns the length of row names
+unique(has_salary$JobSatisfaction)   # just a quick head check to remove duplication
+
 # linear model to predict Job Satisfaction by Salary
 model <- glm(JobSatisfaction ~ Salary, data = has_salary , family = "poisson")
 model
@@ -36,15 +37,15 @@ glm.diag.plots(logmodel)
 
 ggplot(has_salary, aes(Salary)) + geom_histogram(color="#667ea5", fill= "#9ec2ff")
 
-# why are these people making so little?
-# perhaps it's employment status:
+# To check why people making so little, so we tried some analysis on employment status:
+
 low_salaries <- has_salary %>% 
   filter(Salary < 25000) %>% 
   group_by(EmploymentStatus)
 ggplot(low_salaries, aes(Salary, fill=EmploymentStatus)) + 
   geom_histogram(color="green4", lwd=0.25)
 
-# perhaps it's currency:
+# Checking on the baisis of employee currency:
 
 by_country <- low_salaries %>%
   add_count(Country) %>%
@@ -81,3 +82,4 @@ ggplot(middle_america, aes(x = Salary, y = JobSatisfaction)) + # draw a
   geom_point() + # add points
   geom_smooth(method = "glm", # plot a regression...
               method.args = list(family = "gaussian")) # ...from the binomial family
+

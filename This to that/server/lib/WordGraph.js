@@ -62,7 +62,8 @@ class WordGraph extends GraphBase {
       cnode = this.getNode(cnode.parent);
     }
     ret.push(cnode.id);
-    return ret.reverse().join(',');
+    let result="The shortest path between two words:-> "+ret.reverse().join(',');
+    return result;
   }
 
   getWordChain(startWord, endWord) {
