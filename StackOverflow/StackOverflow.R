@@ -1,6 +1,16 @@
 library(tidyverse)
 library(boot)
+library
 stackOverflow <- read_csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\StackOverflow\\Data\\survey_results_public.csv")
+stackOverflow1 <- read_csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\StackOverflow\\File_converstion_for_stack_problem\\req.csv")
+
+DF=sqldf('select country, count(*) from stackOverflow group by Country')
+ggplot(DF, aes(x=DF$Country,y= DF$`count(*)`)) + geom_point() + labs(title="Frequency bar chart")
+
+DF1=sqldf('select HaveWorkedLanguage, count(*) from stackOverflow1 where HaveWorkedLanguage != "NA" group by HaveWorkedLanguage')
+
+ggplot(DF1, aes(x=HaveWorkedLanguage,y=DF1$`count(*)`)) + geom_point() + labs(title="Frequency of languages")
+
 # Looking at the vars in question:
 head(stackOverflow)
 summary(stackOverflow$Salary)
