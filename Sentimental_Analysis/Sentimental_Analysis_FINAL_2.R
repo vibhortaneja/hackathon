@@ -8,7 +8,7 @@ library(syuzhet)
 
 
 #Import the twitter data set
-demonitization_data=read.csv('C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\Sentimental_Analysis\\Data\\demonetization-tweets-2.csv',stringsAsFactors = FALSE)
+demonitization_data=read.csv('C:\\Users\\vibhor.5.taneja\\Desktop\\hackathon\\Sentimental_Analysis\\Data\\demonetization-tweets-2.csv',stringsAsFactors = FALSE)
 options(warn=-1)
 summary(demonitization_data)
 
@@ -55,3 +55,21 @@ Replies=Replies[order(-Replies$tweet),]
 Replies=head(Replies,n=20)
 colnames(Replies)=c("User","RepliesReceived")
 Replies
+
+###############Sentimental analysis #######################################################
+some_txt<-gsub("(RT|via)((?:\\b\\w*@\\w+)+)","",demonitization_data$text)
+some_txt<-gsub("http[^[:blank:]]+","",some_txt)
+some_txt<-gsub("@\\w+","",some_txt)
+some_txt<-gsub("[[:punct:]]"," ",some_txt)
+some_txt<-gsub("[^[:alnum:]]"," ",some_txt)
+
+
+tweetSentiment <- get_nrc_sentiment(some_txt)
+
+barplot(
+  sort(colSums(prop.table(tweetSentiment[, 1:8]))), 
+  #  horiz = TRUE, 
+  cex.names = 0.7, 
+  las = 1, 
+  main = "Emotions in Tweets text", xlab="Percentage"
+)

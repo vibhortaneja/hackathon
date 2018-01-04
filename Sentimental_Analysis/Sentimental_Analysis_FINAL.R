@@ -10,7 +10,7 @@ library(igraph)
 library(ggraph)
 library(wordcloud2)
 
-demonitization_data <-read.csv("C:\\Users\\VIBHOR TANEJA\\Desktop\\hackathon\\Sentimental_Analysis\\Data\\demonetization-tweets.csv")
+demonitization_data <-read.csv("C:\\Users\\vibhor.5.taneja\\Desktop\\hackathon\\Sentimental_Analysis\\Data\\demonetization-tweets.csv")
 demonitization_bigrams <- unnest_tokens(demonitization_data, input = text, output = bigram, token = "ngrams", n=2)
 
 demonitization_bigrams %>% count(bigram, sort = TRUE)
@@ -34,7 +34,6 @@ not_words %>% mutate(contribution = n * score) %>% arrange(desc(abs(contribution
   xlab("Words preceded by \"not\"") +
   ylab("Sentiment score * number of occurrences") +
   coord_flip()
-
 
 ######################### Sentiments according to predefined library ########################################
 demonitization_data_text<-as.character(demonitization_data$text)
