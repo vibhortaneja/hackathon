@@ -12,6 +12,7 @@ wordGraph.create(dictionary);
 app.get('/ThisToThat/:startWord/:endWord', (req, res) => {
   let result = wordGraph.getWordChain(req.params.startWord, req.params.endWord);
   res.send(result);
+ // console.log(result)
 });
 
 app.listen(4000, () => {
